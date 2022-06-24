@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static%}
+{% block main %}
+<body>
+    <h3>Lista de Rotativos</h3>
+    {% for i in dados %}
+        Veiculo: {{ i.id_veiculo }} <br>
+        Entrada: {{ i.data_entrada }} <br>
+        Saída: {{ i.data_saida }} <br>
+        Total: {{ i.total }} <br>
+        Pago: <font color="red">{{ i.pago }}</font> <br>
+        <br>
+        <button onclick="location.href='/altera_rotativo/{{i.id}}'" type="button" class="btn btn-success"><i class="fa fa-edit"></i>Editar</button>
+        <button id="botao_excluir" onclick="location.href='/exclui_rotativo/{{i.id}}'" type="button" class="btn btn-danger"><i class="fa fa-trash"></i>Excluir</button>
+        <br>
+        <hr>
+        <br>
+        <br>
+    {% endfor %}
+    <button type="button" onclick="location.href='/'">Voltar</button>
+</body>
+
+{%endblock%}

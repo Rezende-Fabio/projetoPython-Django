@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static%}
+{% block main %}
+<body>
+    <h3>Lista Mensalista</h3>
+    {% for i in dados %}
+        Cliente: {{i.id_cliente}} <br>
+        Preço: {{i.id_tabela}}<br>
+        Dia do Venciemnto: {{i.dia_vencimento}}<br>
+        {% if i.em_pendencia %}
+            Dentro do Prazo: <strong>Em Aberto</strong><br>
+        {% else %}
+            Dentro do Prazo: <strong>OK</strong><br>
+        {% endif %}
+        Forma de Pagamento: {{i.idformaPagamento}}<br>
+        Total: {{i.total}}<br>
+    <br>
+    <button onclick="location.href='/altera_mensalista/{{i.id}}'" type="button" class="btn btn-success"><i class="fa fa-edit"></i>Editar</button>
+    <button id="botao_excluir" onclick="location.href='/exclui_fabricante/{{i.id}}'" type="button" class="btn btn-danger"><i class="fa fa-trash"></i>Excluir</button>
+    <br>
+    <hr>
+        <br>
+        <br>
+    {% endfor %}
+    <button type="button" onclick="location.href='/'">Voltar</button>
+</body>
+{%endblock%}

@@ -1,0 +1,119 @@
+h3 {
+    color:black;
+    text-align:center;
+    font-family: Verdana;
+    font-size: 35px;
+}
+
+a {
+    display: inline-block;
+    background: #69c;
+    color: rgb(0, 0, 0);
+    padding: 5px 10px;
+}
+
+#botao_excluir{
+    display: inline-block;
+    background: rgb(226, 12, 12);
+    color: rgb(248, 248, 248);
+    padding: 5px 10px;
+
+}
+
+#texto_lista {
+    color:black;
+    text-align:center;
+    font-family: Verdana;
+    font-size: 20px;
+}
+
+#triangulo{
+    width: 50px;
+    height: 50px;
+    position: relative;
+    z-index: 2;
+    border: solid 90px transparent;
+    border-bottom: solid 90px #99f;
+    border-top: none;
+}
+.triangulo-borda{
+    position: relative;
+    z-index: 1;
+    top: -136px;
+    width: 1px;
+    height: 1px;
+    border: solid 100px transparent;
+    border-bottom: solid 100px #000;
+    border-top: none;
+}
+
+.quadrado {
+    width: 150px;
+    height: 150px;
+    background: #000;
+}
+
+.container-livros{
+    margin: 5rem 10rem;
+    display: flex;
+    justify-content:flex-start;
+}
+
+.clearfix:before,
+.clearfix:after {
+    content: " "; /* 1 */
+    display: table; /* 2 */
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+/**
+ * For IE 6/7 only
+ * Include this rule to trigger hasLayout and contain floats.
+ */
+.clearfix {
+    *zoom: 1;
+}
+
+body {
+  font-family: "Helvetica Neue", Helvetica, arial, freesans, clean, sans-serif;
+  color: #66595c;
+  background-color: #faf6ec;
+}
+
+/* Start the styles  */
+p {
+  line-height: 1.5;
+}
+h1 {
+  margin-bottom: 0;
+}
+h2 {
+  margin-top: 10px;
+  font-weight: 400;
+  line-height: 1.2;
+}
+.wrapper {
+  padding: 30px 30px 10px 30px;
+  max-width: 760px;
+  margin-right: auto;
+  margin-left: auto;
+}
+.circle {
+  background-repeat: no-repeat;
+  width: 250px;
+  height: 250px;
+  background-color: #40a977;
+  border-radius: 50%;
+  float: left;
+  shape-outside: circle() margin-box;
+  margin: 30px;
+}
+
+.content-form{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}

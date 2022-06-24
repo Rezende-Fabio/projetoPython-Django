@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block main %}
+<h3> Tabela de Preços</h3>
+    {% for i in dados %}
+        <br>
+        Preço: {{i.preco}}<br>
+        Descrição: {{i.descricao_tab}}<br>
+        <hr>
+    {% endfor %}
+    <button type="button" onclick="location.href='/'">Voltar</button>
+{%endblock%}

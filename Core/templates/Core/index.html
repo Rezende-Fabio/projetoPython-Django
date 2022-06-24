@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block main %}
+
+<body style="background-color:rgb(60, 63, 62);">
+    <div align="Center">
+        <font size="65" style="color: white;"> T-car</font>
+    </div>
+    <div class="dipay-flex">
+        <div align="center">
+            <img src={% static "img/fundo.png" %} width="600"> <br>
+        </div> <br><br>
+    </div>
+    <form method="post">
+        {% csrf_token %}
+        <input type="text" name="i_nome">
+        <button type="submit">Enviar</button>
+    </form>
+
+    <br> {{valor}}
+
+</body>
+{%endblock%}
+

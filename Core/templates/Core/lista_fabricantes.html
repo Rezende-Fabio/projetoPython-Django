@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load static%}
+{% block main %}
+<body>
+    Lista de Fabricantes<br><br>
+    {% for i in dados %}
+        Fabricante: {{i.descricao}} <br>
+    <br>
+    <button onclick="location.href='/altera_fabricante/{{i.id}}'" type="button" class="btn btn-success"><i class="fa fa-edit"></i>Editar</button>
+    <button id="botao_excluir" onclick="location.href='/exclui_fabricante/{{i.id}}'" type="button" class="btn btn-danger"><i class="fa fa-trash"></i>Excluir</button>
+    <br>
+    <hr>
+        <br>
+        <br>
+    {% endfor %}
+    <button type="button" onclick="location.href='/'">Voltar</button>
+</body>
+{%endblock%}

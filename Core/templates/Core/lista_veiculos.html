@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static%}
+{% block main %}
+
+<body>
+    <h3>Lista de Veiculos </h3><br>
+    {% for i in dados %}
+        Cliente: {{i.id_cliente}} <br>
+        Fabricante: {{i.id_fabricante}} <br>
+        Modelo: {{i.modelo}} <br>
+        Placa: {{i.placa}} <br>
+        
+        {% if i.ano %}
+            Ano: {{i.ano}} <br>
+        {% else %}
+            Ano: <br>
+        {% endif %}
+
+        {% if i.cor %}
+            Cor: {{i.cor}} <br>
+        {% else %}
+            Cor: <br>
+        {% endif %}
+
+        {% if i.foto %}
+            <img src="{{i.foto.url}}" width="200"> <br>
+        {% else %}
+            <img src={% static "img/veiculo_generico.png"%} width="200"> <br>
+        {% endif %}
+        <br>
+        <button onclick="location.href='/altera_veiculo/{{i.id}}'" type="button" class="btn btn-success"><i class="fa fa-edit"></i>Editar</button>
+        <button id="botao_excluir" onclick="location.href='/exclui_veiculo/{{i.id}}'" type="button" class="btn btn-danger"><i class="fa fa-trash"></i>Excluir</button>
+        <br>
+        <hr>
+        <br>
+        <br>
+    {% endfor %}
+    <button type="button" onclick="location.href='/'">Voltar</button>
+{%endblock%}
+</body>

@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+{% load static%}
+{% block main %}
+
+{% for msg in messages %}
+    <div class="alert alert-success alert-dismissible">
+        {{ msg }}
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+    </div>    
+
+{% endfor %}
+
+<head>
+    <link href={% static "css/estilos.css" %} rel="stylesheet">
+    <link href={% static "css/bootstrap-grid.css" %} rel="stylesheet">
+    <link href={% static "css/bootstrap-reboot.css" %} rel="stylesheet">
+    <link href={% static "css/bootstrap.css" %} rel="stylesheet">
+</head>
+
+<body>
+    <h3>Lista Clientes</h3><br>
+    {% for i in dados %}
+    <div class="content-form">    
+        <div class="table-list">
+                Nome: {{i.nome}} <br>
+                {% if i.endereco  %}
+                    Endereço: {{i.endereco}} <br>
+                {% else %}
+                    Endereço: <br>  
+                {% endif %}
+                
+                {% if i.complemento %}
+                    Complemento: {{i.complemento}} <br>
+                {% else %}
+                    Complemento: <br>
+                {% endif %}
+
+                {% if i.bairro %}
+                    Bairro: {{i.bairro}} <br>
+                {% else %}
+                    Bairro: <br>
+                {% endif %}
+
+                {% if i.cidade %}
+                    Cidade: {{i.cidade}} <br>
+                {% else %}
+                    Cidade: <br>
+                {% endif %}
+                
+                {% if i.cep %}
+                    CEP: {{i.cep}} <br>
+                {% else %}
+                    CEP: <br>
+                {% endif %}
+
+                E-mail: {{i.email}} <br>
+
+                {% if i.telefone %}
+                    Telefone: {{i.telefone}} <br>
+                {% else %}
+                    Telefone: <br>
+                {% endif %}
+
+                {% if i.foto %}
+                    <img src="{{i.foto.url}}" width="200"> <br>
+                {% else %}
+                    <img src={% static "img/perfil_generico.png"%} width="50"> <br>
+                {% endif %}
+                <br>
+                <button onclick="location.href='/altera_cliente/{{i.id}}'" type="button" class="btn btn-success"><i class="fa fa-edit"></i> Editar</button>
+                <button id="botao_excluir" onclick="location.href='/exclui_cliente/{{i.id}}'" type="button" class="btn btn-danger"><i class="fa fa-trash"></i> Excluir</button>
+                <br>           
+        </div>
+    </div>
+<hr>
+    {% endfor %}
+    <button type="button" onclick="location.href='/'">Voltar</button>
+</body>
+
+{%endblock%}

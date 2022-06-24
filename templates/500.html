@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block main %}
+
+    <h3>O sistema encontrou uma condição inesperada e que o impediu de atender á solicitação. Erro: </h3>
+    {% if msg_erro %}
+        {{ msg_erro }}
+    {% else %}
+        500
+    {% endif %}
+
+{% endblock %}
