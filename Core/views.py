@@ -50,7 +50,6 @@ def lista_clientes(request):
         contexto = {"msg_erro": mensagem_erro}
         return render(request, '500.html', contexto)
 
-
 def cadastro_veiculo(request):
     try:
         form = FormVeiculo(request.POST or None, request.FILES or None)
@@ -78,7 +77,6 @@ def lista_veiculos(request):
         contexto = {"msg_erro": mensagem_erro}
         return render(request, '500.html', contexto)
 
-
 def cadastro_fabricante(request):
     try:
         form = FormFabricante(request.POST or None, request.FILES or None)
@@ -95,7 +93,6 @@ def cadastro_fabricante(request):
         contexto = {"msg_erro": mensagem_erro}
         return render(request, '500.html', contexto)
 
-
 def lista_de_fabricantes(request):
     try:
         dados = Fabricante.objects.all()
@@ -109,7 +106,6 @@ def lista_de_fabricantes(request):
         contexto = {"msg_erro": mensagem_erro}
         return render(request, '500.html', contexto)
 
-
 def alterar_cliente(request, id):
     try:
         cliente = Cliente.objects.get(id=id)
@@ -122,11 +118,10 @@ def alterar_cliente(request, id):
             return redirect("Lista_Clientes")
 
         contexto = {'form': form, "titulo": "Atualizar Cliente", "strigBotao": "Salvar"}
-        return render(request, "core/cadastro.html", contexto)
+        return render(request, "Core/cadastro.html", contexto)
     except Exception as mensagem_erro:
         contexto = {"msg_erro": mensagem_erro}
         return render(request, '500.html', contexto)
-
 
 def exclui_cliente(request, id):
     try:
@@ -134,13 +129,12 @@ def exclui_cliente(request, id):
         if request.POST:
             cliente.delete()
             contexto = {"objeto": cliente.nome, "url": "/lista_clientes/"}
-            return render(request, "core/mensagem_exclusao.html", contexto)
+            return render(request, "Core/mensagem_exclusao.html", contexto)
         contexto = {"url": "/lista_clientes/", "objeto": cliente.nome}
-        return render(request, "core/confrima_exclusao.html", contexto)
+        return render(request, "Core/confrima_exclusao.html", contexto)
     except Exception as mensagem_erro:
         contexto = {"msg_erro": mensagem_erro}
         return render(request, '500.html', contexto)
-
 
 def alterar_veiculo(request, id):
     try:
@@ -150,14 +144,13 @@ def alterar_veiculo(request, id):
         if form.is_valid():
             form.save()
             contexto = {'objeto': veiculo.modelo, 'url': '/lista_veiculos/'}
-            return render(request, "core/mensagem_salvo.html", contexto)
+            return render(request, "Core/mensagem_salvo.html", contexto)
 
         contexto = {'form': form, "titulo": "Atualizar Veiculo", "strigBotao": "Salvar"}
-        return render(request, "core/cadastro.html", contexto)
+        return render(request, "Core/cadastro.html", contexto)
     except Exception as mensagem_erro:
         contexto = {"msg_erro": mensagem_erro}
         return render(request, '500.html', contexto)
-
 
 def exclui_veiculo(request, id):
     try:
@@ -165,13 +158,12 @@ def exclui_veiculo(request, id):
         if request.POST:
             veiculo.delete()
             contexto = {"objeto": veiculo.modelo, "url": "/lista_veiculos/"}
-            return render(request, "core/mensagem_exclusao.html", contexto)
+            return render(request, "Core/mensagem_exclusao.html", contexto)
         contexto = {"url": "/lista_veiculos/", "objeto": veiculo.modelo}
-        return render(request, "core/confrima_exclusao.html", contexto)
+        return render(request, "Core/confrima_exclusao.html", contexto)
     except Exception as mensagem_erro:
         contexto = {"msg_erro": mensagem_erro}
         return render(request, '500.html', contexto)
-
 
 def alterar_fabricante(request, id):
     try:
@@ -181,14 +173,13 @@ def alterar_fabricante(request, id):
         if form.is_valid():
             form.save()
             contexto = {'objeto': fabricante.descricao, 'url': '/lista_de_fabricantes/'}
-            return render(request, "core/mensagem_salvo.html", contexto)
+            return render(request, "Core/mensagem_salvo.html", contexto)
 
         contexto = {'form': form, "titulo": "Atualizar Fabricante", "strigBotao": "Salvar"}
-        return render(request, "core/cadastro.html", contexto)
+        return render(request, "Core/cadastro.html", contexto)
     except Exception as mensagem_erro:
         contexto = {"msg_erro": mensagem_erro}
         return render(request, '500.html', contexto)
-
 
 def exclui_fabricante(request, id):
     try:
@@ -196,9 +187,9 @@ def exclui_fabricante(request, id):
         if request.POST:
             veiculo.delete()
             contexto = {"objeto": veiculo.descricao, "url": "/lista_de_fabricantes/"}
-            return render(request, "core/mensagem_exclusao.html", contexto)
+            return render(request, "Core/mensagem_exclusao.html", contexto)
         contexto = {"url": "/lista_de_fabricantes/", "objeto": veiculo.descricao}
-        return render(request, "core/confrima_exclusao.html", contexto)
+        return render(request, "Core/confrima_exclusao.html", contexto)
     except Exception as mensagem_erro:
         contexto = {"msg_erro": mensagem_erro}
         return render(request, '500.html', contexto)
@@ -210,11 +201,10 @@ def cadastro_rotativo(request):
             form.save()
             return redirect("Lista Rotativos")
         contexto = {"form": form, "titulo":"Cadastro de Rotativo", "strigBotao": "Cadastrar", "calendario": True}
-        return render(request, "core/cadastro.html", contexto)
+        return render(request, "Core/cadastro.html", contexto)
     except Exception as mensagem_erro:
         contexto = {"msg_erro": mensagem_erro}
         return render(request, '500.html', contexto)
-
 
 def lista_de_rotativos(request):
     try:
@@ -224,11 +214,10 @@ def lista_de_rotativos(request):
             if request.POST['pesquisa']:
                 dados = Rotativo.objects.filter(id_veiculo=int(request.POST['pesquisa']))
         contexto = {"dados": dados}
-        return render(request, "core/lista_rotativos.html", contexto)
+        return render(request, "Core/lista_rotativos.html", contexto)
     except Exception as mensagem_erro:
         contexto = {"msg_erro": mensagem_erro}
         return render(request, '500.html', contexto)
-
 
 def alterar_rotativo(request, id):
     try:
@@ -239,10 +228,10 @@ def alterar_rotativo(request, id):
             rotativo.calculaTotal()
             form.save()
             contexto = {'objeto': rotativo.id_veiculo, 'url': '/lista_de_rotativos/'}
-            return render(request, "core/mensagem_salvo.html", contexto)
+            return render(request, "Core/mensagem_salvo.html", contexto)
 
         contexto = {'form': form, "titulo": "Atualizar Rotativo", "strigBotao": "Salvar", "calendario": True}
-        return render(request, "core/cadastro.html", contexto)
+        return render(request, "Core/cadastro.html", contexto)
     except Exception as mensagem_erro:
         contexto = {"msg_erro": mensagem_erro}
         return render(request, '500.html', contexto)
@@ -254,9 +243,9 @@ def exclui_rotativo(request, id):
         if request.POST:
             rotativo.delete()
             contexto = {"objeto": rotativo.id_veiculo, "url": "/lista_de_rotativos/"}
-            return render(request, "core/mensagem_exclusao.html", contexto)
+            return render(request, "Core/mensagem_exclusao.html", contexto)
         contexto = {"url": "/lista_de_rotativos/", "objeto": rotativo.id_veiculo}
-        return render(request, "core/confrima_exclusao.html", contexto)
+        return render(request, "Core/confrima_exclusao.html", contexto)
     except Exception as mensagem_erro:
         contexto = {"msg_erro": mensagem_erro}
         return render(request, '500.html', contexto)
@@ -266,7 +255,7 @@ def lista_tabela(request):
     try:
         dados = Tabela.objects.all()
         contexto = {"dados":dados}
-        return render(request, 'core/tabela_de_precos.html', contexto)
+        return render(request, 'Core/tabela_de_precos.html', contexto)
     except Exception as mensagem_erro:
         contexto = {"msg_erro": mensagem_erro}
         return render(request, '500.html', contexto)
@@ -279,7 +268,7 @@ def cadastro_mensalista(request):
             form.save()
             return redirect("Lista Mensalistas")
         contexto = {"form": form, "titulo":"Cadastro de Mensalista", "strigBotao": "Cadastra"}
-        return render(request, "core/cadastro.html", contexto)
+        return render(request, "Core/cadastro.html", contexto)
     except Exception as mensagem_erro:
         contexto = {"msg_erro": mensagem_erro}
         return render(request, '500.html', contexto)
@@ -293,7 +282,7 @@ def lista_mensalista(request):
             if request.POST['pesquisa']:
                 dados = Mensalista.objects.filter(id_cliente=int(request.POST['pesquisa']))
         contexto = {"dados": dados}
-        return render(request, "core/lista_mensalista.html", contexto)
+        return render(request, "Core/lista_mensalista.html", contexto)
     except Exception as mensagem_erro:
         contexto = {"msg_erro": mensagem_erro}
         return render(request, '500.html', contexto)
@@ -307,10 +296,10 @@ def alterar_mensalista(request, id):
         if form.is_valid():
             form.save()
             contexto = {"objeto": mensalista.id_cliente, "url": "/lista_mensalistas/"}
-            return render(request, "core/mensagem_salvo.html", contexto)
+            return render(request, "Core/mensagem_salvo.html", contexto)
         
         contexto = {"form": form, "titulo": "Atualizar Mensalistas", "strigBotao": "Salvar"}
-        return render(request, "core/cadastro.html", contexto)
+        return render(request, "Core/cadastro.html", contexto)
     except Exception as mensagem_erro:
         contexto = {"msg_erro": mensagem_erro}
         return render(request, '500.html', contexto)
