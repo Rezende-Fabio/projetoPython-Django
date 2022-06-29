@@ -125,13 +125,14 @@ def alterar_cliente(request, id):
 
 def exclui_cliente(request, id):
     try:
+        form = FormCliente(request.POST or None, request.FILES or None)
         cliente = Cliente.objects.get(id=id)
-        if request.POST:
-            cliente.delete()
-            contexto = {"objeto": cliente.nome, "url": "/lista_clientes/"}
-            return render(request, "Core/mensagem_exclusao.html", contexto)
-        contexto = {"url": "/lista_clientes/", "objeto": cliente.nome}
-        return render(request, "Core/confrima_exclusao.html", contexto)
+        if form.is_valid():
+            if request.POST:
+                nome = form.cleaned_data['nome']
+                cliente.delete()
+                messages.success(request, f"Cliente {nome} Cadastrado com Sucesso!!")
+            return redirect("Lista_Clientes")
     except Exception as mensagem_erro:
         contexto = {"msg_erro": mensagem_erro}
         return render(request, '500.html', contexto)
