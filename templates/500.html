@@ -2,8 +2,9 @@
 {% block main %}
 
     <h3>O sistema encontrou uma condição inesperada e que o impediu de atender á solicitação. Erro: </h3>
+    {{ msg_erro }}
     {% if msg_erro %}
-        {{ msg_erro }}
+        pass
     {% else %}
         500
     {% endif %}
