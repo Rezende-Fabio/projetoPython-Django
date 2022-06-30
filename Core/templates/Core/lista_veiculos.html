@@ -2,6 +2,13 @@
 {% load static%}
 {% block main %}
 
+{% for msg in messages %}
+    <div class="alert alert-success alert-dismissible">
+        {{ msg }}
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+    </div>    
+{% endfor %}
+
 <body>
     <h3>Lista de Veiculos </h3><br>
     {% for i in dados %}

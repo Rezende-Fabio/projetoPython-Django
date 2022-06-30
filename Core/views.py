@@ -142,9 +142,10 @@ def alterar_veiculo(request, id):
         form = FormVeiculo(request.POST or None, request.FILES or None, instance=veiculo)
 
         if form.is_valid():
+            nome = form.cleaned_data["modelo"]
             form.save()
-            contexto = {'objeto': veiculo.modelo, 'url': '/lista_veiculos/'}
-            return render(request, "Core/mensagem_salvo.html", contexto)
+            messages.success(request, f"Dados do Veículo {nome} atulizados com Sucesso!")
+            return redirect("Lista Veiculos")
 
         contexto = {'form': form, "titulo": "Atualizar Veiculo", "strigBotao": "Salvar"}
         return render(request, "Core/cadastro.html", contexto)
@@ -171,9 +172,10 @@ def alterar_fabricante(request, id):
         form = FormFabricante(request.POST or None, request.FILES or None, instance=fabricante)
 
         if form.is_valid():
+            nome = form.cleaned_data["descricao"]
             form.save()
-            contexto = {'objeto': fabricante.descricao, 'url': '/lista_de_fabricantes/'}
-            return render(request, "Core/mensagem_salvo.html", contexto)
+            messages.success(request, f"Dados do Fabricante {nome} atulizados com Sucesso!")
+            return redirect("Lista Fabricantes")
 
         contexto = {'form': form, "titulo": "Atualizar Fabricante", "strigBotao": "Salvar"}
         return render(request, "Core/cadastro.html", contexto)
@@ -225,10 +227,11 @@ def alterar_rotativo(request, id):
         form = FormRotativo(request.POST or None, instance=rotativo)
 
         if form.is_valid():
+            nome = form.cleaned_data["id_veiculo"]
             rotativo.calculaTotal()
             form.save()
-            contexto = {'objeto': rotativo.id_veiculo, 'url': '/lista_de_rotativos/'}
-            return render(request, "Core/mensagem_salvo.html", contexto)
+            messages.success(request, f"Dados do Rotativo {nome} atulizados com Sucesso!")
+            return redirect("Lista Rotativos")
 
         contexto = {'form': form, "titulo": "Atualizar Rotativo", "strigBotao": "Salvar", "calendario": True}
         return render(request, "Core/cadastro.html", contexto)
@@ -294,9 +297,10 @@ def alterar_mensalista(request, id):
         form = FormMensalista(request.POST or None, instance=mensalista)
 
         if form.is_valid():
+            nome = form.cleaned_data["id_cliente"]
             form.save()
-            contexto = {"objeto": mensalista.id_cliente, "url": "/lista_mensalistas/"}
-            return render(request, "Core/mensagem_salvo.html", contexto)
+            messages.success(request, f"Dados do Mensalista {nome} atulizados com Sucesso!")
+            return redirect("Lista Mensalistas")
         
         contexto = {"form": form, "titulo": "Atualizar Mensalistas", "strigBotao": "Salvar"}
         return render(request, "Core/cadastro.html", contexto)
