@@ -16,12 +16,26 @@
         Total: {{i.total}}<br>
     <br>
     <button onclick="location.href='/altera_mensalista/{{i.id}}'" type="button" class="btn btn-success"><i class="fa fa-edit"></i>Editar</button>
-    <button id="botao_excluir" onclick="location.href='/exclui_fabricante/{{i.id}}'" type="button" class="btn btn-danger"><i class="fa fa-trash"></i>Excluir</button>
+    <button id="botao_excluir" onclick="location.href='/exclui_mensalista/{{i.id}}'" type="button" class="btn btn-danger"><i class="fa fa-trash"></i>Excluir</button>
     <br>
     <hr>
         <br>
         <br>
     {% endfor %}
     <button type="button" onclick="location.href='/'">Voltar</button>
+
+    {% if verifica == False %}
+        <section class="modal">
+            <div id="card">
+                <h2>AVISO</h2>
+                <hr>
+                <p>Fabricante {{objeto}} excluido com sucesso!!</p>
+                <div class="btns">
+                    <a class="btn-ok" href="/">OK</a>
+                </div>
+            </div>
+        </section>
+    {% endif %}
+
 </body>
 {%endblock%}

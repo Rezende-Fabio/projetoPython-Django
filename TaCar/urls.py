@@ -50,6 +50,8 @@ urlpatterns = [
     path("exclui_veiculo/<int:id>/", exclui_veiculo, name="Exclui Veiculo"),
     path("exclui_fabricante/<int:id>/", exclui_fabricante, name="Exclui Fabricante"),
     path("exclui_rotativo/<int:id>/", exclui_rotativo, name="Excluir Rotativo"),
+    path("exclui_mensalista/<int:id>/", exclui_mensalista, name="Excluir Mensalista"),
+
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

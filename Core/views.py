@@ -187,7 +187,7 @@ def exclui_fabricante(request, id):
         if request.POST:
             fabricante.delete()
             contexto = {"verifica": False, "objeto": fabricante.descricao}
-            return render(request, "Core/lista_de_fabricantes.html", contexto)
+            return render(request, "Core/lista_fabricantes.html", contexto)
         contexto = {"url": "/lista_de_fabricantes/", "objeto": fabricante.descricao}
         return render(request, "Core/confrima_exclusao.html", contexto)
     except Exception as mensagem_erro:
@@ -243,7 +243,7 @@ def exclui_rotativo(request, id):
         if request.POST:
             rotativo.delete()
             contexto = {"verifica": False, "objeto": rotativo.id_veiculo}
-            return render(request, "Core/lista_de_rotativos.html", contexto)
+            return render(request, "Core/lista_rotativos.html", contexto)
         contexto = {"url": "/lista_de_rotativos/", "objeto": rotativo.id_veiculo}
         return render(request, "Core/confrima_exclusao.html", contexto)
     except Exception as mensagem_erro:
@@ -302,6 +302,19 @@ def alterar_mensalista(request, id):
         return render(request, "Core/cadastro.html", contexto)
     except Exception as mensagem_erro:
         contexto = {"msg_erro": mensagem_erro}
+        return render(request, '500.html', contexto)
+    
+def exclui_mensalista(request, id):
+    try:
+        objeto = Mensalista.objects.get(id=id)
+        if request.POST:
+            objeto.delete()
+            contexto = {"verifica": False, "objeto": objeto.id_cliente}
+            return render(request, "Core/lista_mensalista.html", contexto)
+        contexto = {'url':'/lista_mensalista/','objeto':objeto.dia_vencimento}
+        return render(request, 'Core/confirma_exclusao.html', contexto)
+    except Exception as mensagem_erro:
+        contexto = {'msg_erro': mensagem_erro}
         return render(request, '500.html', contexto)
 
         
