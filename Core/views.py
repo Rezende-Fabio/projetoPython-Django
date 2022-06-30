@@ -55,7 +55,7 @@ def cadastro_veiculo(request):
         form = FormVeiculo(request.POST or None, request.FILES or None)
         if form.is_valid():
             form.save()
-            return redirect("url_principal")
+            return redirect("Lista Veiculos")
         else:
             contexto = {"form": form, "titulo": "Cadatro de Veículo", "strigBotao": "Cadastrar"}
 
@@ -83,7 +83,7 @@ def cadastro_fabricante(request):
 
         if form.is_valid():
             form.save()
-            return redirect("url_principal")
+            return redirect("Lista Fabricantes")
 
         else:
             contexto = {"form": form, "titulo": "Cadatro de Fabricantes", "strigBotao": "Cadastrar"}
