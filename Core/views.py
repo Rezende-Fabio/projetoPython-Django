@@ -128,10 +128,10 @@ def exclui_cliente(request, id):
         cliente = Cliente.objects.get(id=id)
         if request.POST:
             cliente.delete()
-            contexto = {"verifica": False, "objeto": cliente.nome, "url": "/lista_clientes/"}
-            return render(request, "Core/mensagem_exclusao.html", contexto)
-        contexto = {"verifica": False, "objeto": cliente.nome}
-        return render(request, "Core/lista_clientes.html", contexto)
+            contexto = {"verifica": False, "objeto": cliente.nome}
+            return render(request, "Core/lista_clientes.html", contexto)
+        contexto = {"url": "/lista_clientes/", "objeto": cliente.nome}
+        return render(request, "Core/confrima_exclusao.html", contexto)
     except Exception as mensagem_erro:
         contexto = {"msg_erro": mensagem_erro}
         return render(request, '500.html', contexto)

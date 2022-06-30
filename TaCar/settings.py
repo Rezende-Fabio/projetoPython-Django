@@ -127,7 +127,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [BASE_DIR / 'steticFiles']
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'steticFiles')
+#STATIC_ROOT = os.path.join(BASE_DIR, 'steticFiles')
 
 MEDIA_URL = "/media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, "media_files")
@@ -143,4 +143,4 @@ LOGOUT_REDIRECT_URL = '/'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
-django_heroku.settings( locals() )       
+#django_heroku.settings( locals() )       
