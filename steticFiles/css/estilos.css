@@ -143,10 +143,9 @@ section.modal div#card hr{
 }
 
 section.modal div#card p{
-  padding:  1rem;
+  padding:  0rem;
   text-align: center;
   font-size: 1rem;
-
 }
 
 section.modal div#card div#btns{
