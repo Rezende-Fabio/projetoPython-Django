@@ -1,11 +1,15 @@
 {% extends 'base.html' %}
 
-{%block main%}
-    <h3>Deseja Excluir {{ objeto }} ?</h3>
+{% block main %}
+   <body style="background-color:rgb(60, 63, 62);">
+       <font style= "color:black; font-size: 25px">
+           Deseja excluir os dados de {{ objeto }} ?
+       </font>
+   <br><br>
     <form method="post">
         {% csrf_token %}
-        <button type="submit">SIM</button> &nbsp;
-        <button type="button" onclick="location.href='{{ url }}'">NÃO</button>
+        <button type="submit" class="btn btn-primary">Sim</button> &nbsp &nbsp
+        <button type="button" onclick="location.href='{{ url }}'"class="btn btn-danger">NÃ£o</button>
     </form>
-
-{%endblock%}
+    </body>
+{% endblock %}
