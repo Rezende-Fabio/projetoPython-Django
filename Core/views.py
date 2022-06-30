@@ -54,7 +54,9 @@ def cadastro_veiculo(request):
     try:
         form = FormVeiculo(request.POST or None, request.FILES or None)
         if form.is_valid():
+            nome = form.cleaned_data['modelo']
             form.save()
+            messages.success(request, f"Veículo {nome} Cadastrado com Sucesso!!")
             return redirect("Lista Veiculos")
         else:
             contexto = {"form": form, "titulo": "Cadatro de Veículo", "strigBotao": "Cadastrar"}
@@ -82,7 +84,9 @@ def cadastro_fabricante(request):
         form = FormFabricante(request.POST or None, request.FILES or None)
 
         if form.is_valid():
+            nome = form.cleaned_data['descricao']
             form.save()
+            messages.success(request, f"Fabricante {nome} Cadastrado com Sucesso!!")
             return redirect("Lista Fabricantes")
 
         else:
@@ -200,8 +204,11 @@ def cadastro_rotativo(request):
     try:
         form = FormRotativoCadastro(request.POST or None)
         if form.is_valid():
+            nome = form.cleaned_data["id_veiculo"]
             form.save()
+            messages.success(request, f"Rotativo {nome} Cadastrado com Sucesso!")
             return redirect("Lista Rotativos")
+
         contexto = {"form": form, "titulo":"Cadastro de Rotativo", "strigBotao": "Cadastrar", "calendario": True}
         return render(request, "Core/cadastro.html", contexto)
     except Exception as mensagem_erro:
@@ -239,7 +246,6 @@ def alterar_rotativo(request, id):
         contexto = {"msg_erro": mensagem_erro}
         return render(request, '500.html', contexto)
 
-
 def exclui_rotativo(request, id):
     try:
         rotativo = Rotativo.objects.get(id=id)
@@ -253,7 +259,6 @@ def exclui_rotativo(request, id):
         contexto = {"msg_erro": mensagem_erro}
         return render(request, '500.html', contexto)
 
-
 def lista_tabela(request):
     try:
         dados = Tabela.objects.all()
@@ -263,19 +268,19 @@ def lista_tabela(request):
         contexto = {"msg_erro": mensagem_erro}
         return render(request, '500.html', contexto)
 
-
 def cadastro_mensalista(request):
     try:
         form = FormMensalista(request.POST or None)
         if form.is_valid():
+            nome = form.cleaned_data["id_cliente"]
             form.save()
+            messages.success(request, f"Mensalista {nome} Cadastrado com Sucesso!")
             return redirect("Lista Mensalistas")
         contexto = {"form": form, "titulo":"Cadastro de Mensalista", "strigBotao": "Cadastra"}
         return render(request, "Core/cadastro.html", contexto)
     except Exception as mensagem_erro:
         contexto = {"msg_erro": mensagem_erro}
         return render(request, '500.html', contexto)
-
 
 def lista_mensalista(request):
     try:
@@ -289,7 +294,6 @@ def lista_mensalista(request):
     except Exception as mensagem_erro:
         contexto = {"msg_erro": mensagem_erro}
         return render(request, '500.html', contexto)
-
 
 def alterar_mensalista(request, id):
     try:

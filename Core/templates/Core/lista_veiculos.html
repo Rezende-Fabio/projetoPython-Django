@@ -9,6 +9,13 @@
     </div>    
 {% endfor %}
 
+<head>
+    <link href={% static "css/estilos.css" %} rel="stylesheet">
+    <link href={% static "css/bootstrap-grid.css" %} rel="stylesheet">
+    <link href={% static "css/bootstrap-reboot.css" %} rel="stylesheet">
+    <link href={% static "css/bootstrap.css" %} rel="stylesheet">
+</head>
+
 <body>
     <h3>Lista de Veiculos </h3><br>
     {% for i in dados %}
@@ -48,7 +55,7 @@
     {% if verifica == False %}
     <section class="modal">
         <div id="card">
-            <h2>AVISO</h2>
+            <h3>AVISO</h3>
             <hr>
             <p>Usúario {{objeto}} excluido com sucesso!!</p>
             <div class="btns">

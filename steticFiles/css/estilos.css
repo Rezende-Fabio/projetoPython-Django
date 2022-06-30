@@ -101,16 +101,6 @@ h2 {
   margin-right: auto;
   margin-left: auto;
 }
-.circle {
-  background-repeat: no-repeat;
-  width: 250px;
-  height: 250px;
-  background-color: #40a977;
-  border-radius: 50%;
-  float: left;
-  shape-outside: circle() margin-box;
-  margin: 30px;
-}
 
 .content-form{
   display: flex;
@@ -133,15 +123,16 @@ section.modal{
 }
 
 section.modal div#card{
-  width: 30rem;
+  width: 25rem;
+  height: 12rem;
   position: relative;
   background-color: #fff;
   border-radius: .5rem;
   padding: 2rem;
 }
 
-section.modal div#card h2{
-  padding: 2rem;
+section.modal div#card h3{
+  padding: 1rem;
   margin: 0;
   color: #567EBB; 
 }
@@ -152,9 +143,9 @@ section.modal div#card hr{
 }
 
 section.modal div#card p{
-  padding:  2rem;
+  padding:  1rem;
   text-align: center;
-  font-size: 1.5rem;
+  font-size: 1rem;
 
 }
 
