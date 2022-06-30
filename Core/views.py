@@ -157,8 +157,8 @@ def exclui_veiculo(request, id):
         veiculo = Veiculo.objects.get(id=id)
         if request.POST:
             veiculo.delete()
-            contexto = {"objeto": veiculo.modelo, "url": "/lista_veiculos/"}
-            return render(request, "Core/mensagem_exclusao.html", contexto)
+            contexto = {"verifica": False, "objeto": veiculo.modelo}
+            return render(request, "Core/lista_veiculos.html", contexto)
         contexto = {"url": "/lista_veiculos/", "objeto": veiculo.modelo}
         return render(request, "Core/confrima_exclusao.html", contexto)
     except Exception as mensagem_erro:
@@ -183,12 +183,12 @@ def alterar_fabricante(request, id):
 
 def exclui_fabricante(request, id):
     try:
-        veiculo = Fabricante.objects.get(id=id)
+        fabricante = Fabricante.objects.get(id=id)
         if request.POST:
-            veiculo.delete()
-            contexto = {"objeto": veiculo.descricao, "url": "/lista_de_fabricantes/"}
-            return render(request, "Core/mensagem_exclusao.html", contexto)
-        contexto = {"url": "/lista_de_fabricantes/", "objeto": veiculo.descricao}
+            fabricante.delete()
+            contexto = {"verifica": False, "objeto": fabricante.descricao}
+            return render(request, "Core/lista_de_fabricantes.html", contexto)
+        contexto = {"url": "/lista_de_fabricantes/", "objeto": fabricante.descricao}
         return render(request, "Core/confrima_exclusao.html", contexto)
     except Exception as mensagem_erro:
         contexto = {"msg_erro": mensagem_erro}
@@ -242,8 +242,8 @@ def exclui_rotativo(request, id):
         rotativo = Rotativo.objects.get(id=id)
         if request.POST:
             rotativo.delete()
-            contexto = {"objeto": rotativo.id_veiculo, "url": "/lista_de_rotativos/"}
-            return render(request, "Core/mensagem_exclusao.html", contexto)
+            contexto = {"verifica": False, "objeto": rotativo.id_veiculo}
+            return render(request, "Core/lista_de_rotativos.html", contexto)
         contexto = {"url": "/lista_de_rotativos/", "objeto": rotativo.id_veiculo}
         return render(request, "Core/confrima_exclusao.html", contexto)
     except Exception as mensagem_erro:

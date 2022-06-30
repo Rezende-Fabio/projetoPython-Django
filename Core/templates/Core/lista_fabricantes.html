@@ -14,5 +14,19 @@
         <br>
     {% endfor %}
     <button type="button" onclick="location.href='/'">Voltar</button>
+
+    {% if verifica == False %}
+        <section class="modal">
+            <div id="card">
+                <h2>AVISO</h2>
+                <hr>
+                <p>Fabricante {{objeto}} excluido com sucesso!!</p>
+                <div class="btns">
+                    <a class="btn-ok" href="/">OK</a>
+                </div>
+            </div>
+        </section>
+    {% endif %}
+
 </body>
 {%endblock%}
